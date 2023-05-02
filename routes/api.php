@@ -23,9 +23,13 @@ Route::post('user/login','App\Http\Controllers\adminController@login');
 Route::post('profile/create','App\Http\Controllers\profileController@create');
 
 Route::post('services/create','App\Http\Controllers\adminController@createServices');
+Route::post('country/create','App\Http\Controllers\locationController@createCountry');
+Route::post('state/create','App\Http\Controllers\locationController@createState');
+Route::post('city/create','App\Http\Controllers\locationController@createCity');
 
 
 Route::prefix('admin')->middleware(['auth:api','isAdmin'])->group(function(){
     Route::post('group/create','App\Http\Controllers\adminController@createGroup');
 Route::post('posttype/create','App\Http\Controllers\adminController@createPostType');
+
 });

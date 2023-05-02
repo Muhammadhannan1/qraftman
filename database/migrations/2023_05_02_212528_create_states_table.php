@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('citys', function (Blueprint $table) {
+        Schema::create('states', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->unsignedBigInteger('countryId');
-            $table->foreign('countryId')->references('id')->on('countrys');
+            $table->foreign('countryId')->references('id')->on('countries');
             $table->integer('latitude')->unique()->nullable();
             $table->integer('longitude')->unique()->nullable();
-            $table->unsignedBigInteger('stateId');
-            $table->foreign('stateId')->references('id')->on('states');
+
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('citys');
+        Schema::dropIfExists('states');
     }
 };
